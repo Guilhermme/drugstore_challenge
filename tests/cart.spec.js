@@ -5,13 +5,13 @@ const SearchPage = require('../src/pages/SearchPage');
 const ProductPage = require('../src/pages/ProductPage');
 const CartPage = require('../src/pages/CartPage');
 
-test.describe('Carrinho de compras', () => {
+test.describe('Carrinho de Compras', () => {
 
   test.use({
     storageState: 'auth.json'
   });
 
-  test('Adicionar Dipirona ao carrinho', async ({ page }) => {
+  test('Adicionar produto ao carrinho', async ({ page }) => {
 
     const home = new HomePage(page);
     const search = new SearchPage(page);
@@ -20,20 +20,16 @@ test.describe('Carrinho de compras', () => {
 
     await home.open();
 
-    // SKU Dipirona
     await search.searchBySku('900702');
 
-    // abre detalhe do produto
     await search.openProduct();
 
-    // comprar
     await product.buyProduct();
 
-    // abrir carrinho
     await cart.openCart();
 
-    // validação
     await cart.validateProductAdded();
+
   });
 
 });

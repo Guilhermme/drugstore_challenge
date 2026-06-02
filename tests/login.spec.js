@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const HomePage = require('../src/pages/HomePage');
 const LoginPage = require('../src/pages/LoginPage');
 
-test.describe('Fluxos de autenticação', () => {
+test.describe('Autenticação de Usuário', () => {
   test('Login de usuário válido', async ({ page }) => {
     const home = new HomePage(page);
     const login = new LoginPage(page);
