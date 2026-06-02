@@ -1,3 +1,4 @@
+const { expect } = require('@playwright/test');
 const BasePage = require('./BasePage');
 
 class RegisterPage extends BasePage {
@@ -54,24 +55,29 @@ class RegisterPage extends BasePage {
   }
 
   async fillForm(user) {
-
     await this.emailInput.fill(user.email);
-
     await this.nameInput.fill(user.name);
-
     await this.lastNameInput.fill(user.lastName);
-
     await this.cpfInput.fill(user.cpf);
-
     await this.phoneInput.fill(user.phone);
-
     await this.passwordInput.fill(user.password);
-
     await this.confirmPasswordInput.fill(user.password);
   }
 
   async submitRegistration() {
     await this.registerButton.click();
+  }
+
+  async validateConfirmationScreen(email) {
+
+    await expect(
+      this.page.getByText(
+        `Enviado para seu email: ${email}`
+      )
+    ).toBeVisible({
+      timeout: 10000
+    });
+
   }
 }
 

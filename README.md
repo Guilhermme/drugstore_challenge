@@ -23,24 +23,23 @@ https://www.drogariasaopaulo.com.br
 
 ```text
 .
-├── src
-│   └── pages
-│       ├── BasePage.js
-│       ├── HomePage.js
-│       ├── LoginPage.js
-│       ├── SearchPage.js
-│       ├── ProductPage.js
-│       └── CartPage.js
+src
+├── pages
+│   ├── BasePage.js
+│   ├── HomePage.js
+│   ├── LoginPage.js
+│   ├── SearchPage.js
+│   ├── ProductPage.js
+│   ├── CartPage.js
+│   └── RegisterPage.js
 │
-├── tests
-│   ├── login.spec.js
-│   └── cart.spec.js
+├── utils
+│   └── userFactory.js
 │
-├── auth.json
-├── global-setup.js
-├── playwright.config.js
-├── package.json
-└── README.md
+tests
+├── login.spec.js
+├── cart.spec.js
+└── register.spec.js
 ```
 
 ---
