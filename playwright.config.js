@@ -41,9 +41,11 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
+        /* Força o tamanho da página a ficar em 1080p, anulando o padrão do device */
+        viewport: { width: 1920, height: 1080 }, 
         launchOptions: {
           executablePath: '/usr/bin/google-chrome',
-          args: ['--no-sandbox', '--disable-dev-shm-usage'],
+          args: ['--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080'],
         },
         // Sem storageState - para login tests
       },
@@ -52,33 +54,15 @@ export default defineConfig({
       name: 'chromium-auth',
       use: {
         ...devices['Desktop Chrome'],
+        /* Força o tamanho da página a ficar em 1080p, anulando o padrão do device */
+        viewport: { width: 1920, height: 1080 },
         launchOptions: {
           executablePath: '/usr/bin/google-chrome',
-          args: ['--no-sandbox', '--disable-dev-shm-usage'],
+          args: ['--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080'],
         },
         storageState: 'auth.json',
       },
     },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
   ],
 
   /* Run your local dev server before starting the tests */

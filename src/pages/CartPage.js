@@ -1,19 +1,32 @@
 const BasePage = require('./BasePage');
+const { expect } = require('@playwright/test');
 
 class CartPage extends BasePage {
   constructor(page) {
     super(page);
-    this.cartIcon = 'a.rnk-comp-header-dropdown-trigger-carrinho';
-    this.cartItems = '.cart-items, .cart-item, .rnk-item-carrinho';
+
+    this.cartIcon =
+      '#rnk-comp-header-dropdown-dropdown-carrinho a.nav-link';
+
+    this.cartTitle =
+      'h2';
   }
 
   async openCart() {
-    await this.click(this.cartIcon);
+    await this.page.waitForSelector(
+      this.cartIcon,
+      { timeout: 15000 }
+    );
+
+    await this.page.locator(this.cartIcon).click();
   }
 
-  async itemsCount() {
-    const elems = await this.page.locator(this.cartItems).count();
-    return elems;
+  async validateProductAdded() {
+    await expect(
+      this.page.locator(this.cartTitle)
+    ).toContainText(
+      'Entrega 1 - Drogaria São Paulo - 1 item'
+    );
   }
 }
 

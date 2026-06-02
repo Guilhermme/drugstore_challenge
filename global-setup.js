@@ -33,27 +33,30 @@ module.exports = async () => {
     const home = new HomePage(page);
     const login = new LoginPage(page);
 
-    console.log('Navegando até home...');
+    console.log('\n🔵 FASE 1: Aceitação de Cookies');
     await home.open();
     await home.gerenciarCookiesSeVisivel();
     
-    console.log('Abrindo modal de login...');
+    console.log('\n🔵 FASE 2: Autenticação');
     await home.goToLogin();
     await login.login(email, password);
 
     // aguarda perfil estar disponível via requisição de backend
     try {
       await page.waitForResponse(response => response.url().includes('/no-cache/profileSystem/getProfile') && response.status() === 200, { timeout: 15000 });
-      console.log('Resposta getProfile recebida.');
+      console.log('✓ Resposta getProfile recebida.');
     } catch (e) {
-      console.warn('Não recebeu resposta esperada de getProfile:', e.message);
+      console.warn('⚠ Não recebeu resposta esperada de getProfile:', e.message);
     }
 
+    console.log('\n🔵 FASE 3: Capturando Storage State');
     await context.storageState({ path: 'auth.json' });
     await browser.close();
-    console.log('auth.json gerado com sucesso (se credenciais válidas)');
+    
+    console.log('\n✅ auth.json gerado com sucesso!');
+    console.log('📦 Execute "node debug-cookies-check.js" para validar cookies capturados\n');
   } catch (err) {
-    console.error('Erro durante global-setup:', err && err.message ? err.message : err);
+    console.error('❌ Erro durante global-setup:', err && err.message ? err.message : err);
     throw err;
   }
 };

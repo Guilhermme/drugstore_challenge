@@ -1,28 +1,39 @@
-const { test, expect } = require('@playwright/test');
+const { test } = require('@playwright/test');
+
 const HomePage = require('../src/pages/HomePage');
+const SearchPage = require('../src/pages/SearchPage');
+const ProductPage = require('../src/pages/ProductPage');
 const CartPage = require('../src/pages/CartPage');
 
-test('Inserção de produtos no carrinho (busca e adicionar)', async ({ page }) => {
-  const home = new HomePage(page);
-  const cart = new CartPage(page);
+test.describe('Carrinho de compras', () => {
 
-  await home.open();
+  test.use({
+    storageState: 'auth.json'
+  });
 
-  // Buscar um produto de exemplo
-  await home.searchProduct('dipirona');
+  test('Adicionar Dipirona ao carrinho', async ({ page }) => {
 
-  // Clicar no primeiro resultado e adicionar ao carrinho (seletor mais robusto para links de produto)
-  await page.waitForSelector('main a[href*="/p"]', { timeout: 20000 });
-  const firstResult = page.locator('main a[href*="/p"]').first();
-  await firstResult.click();
+    const home = new HomePage(page);
+    const search = new SearchPage(page);
+    const product = new ProductPage(page);
+    const cart = new CartPage(page);
 
-  // tentar clicar em adicionar ao carrinho
-  const addButton = 'button:has-text("Adicionar")';
-  if (await page.locator(addButton).isVisible()) {
-    await page.locator(addButton).click();
-  }
+    await home.open();
 
-  await cart.openCart();
-  const count = await cart.itemsCount();
-  expect(count).toBeGreaterThanOrEqual(0);
+    // SKU Dipirona
+    await search.searchBySku('900702');
+
+    // abre detalhe do produto
+    await search.openProduct();
+
+    // comprar
+    await product.buyProduct();
+
+    // abrir carrinho
+    await cart.openCart();
+
+    // validação
+    await cart.validateProductAdded();
+  });
+
 });

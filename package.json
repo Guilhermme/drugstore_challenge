@@ -6,10 +6,9 @@
   "scripts": {
     "test": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npx playwright test",
     "test:debug": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npx playwright test --debug",
-    "test:login": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npx playwright test --project=chromium tests/login.spec.js",
-    "test:cart": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npx playwright test --project=chromium-auth tests/cart.spec.js",
-    "auth:setup": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 node global-setup.js",
-    "auth:setup:headed": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 HEADLESS=false node global-setup.js"
+    "test:login": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npx playwright test --project=chromium tests/login.spec.js --headed",
+    "test:cart": "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npx playwright test --project=chromium tests/cart.spec.js --headed --project=chromium-auth",
+    "auth:setup": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 node global-setup.js"
   },
   "keywords": [],
   "author": "",
