@@ -56,7 +56,7 @@ npm install
 
 ## Configuração do Ambiente
 
-Crie um arquivo `.env` na raiz do projeto:
+Crie um arquivo `.env` na raiz do projeto, os dados devem estar cadastrados no site `https://www.drogariasaopaulo.com.br`:
 
 ```env
 USER_EMAIL=seu_email
