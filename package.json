@@ -7,6 +7,7 @@
     "test": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 playwright test",
     "test:login": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 playwright test tests/login.spec.js --project=chromium --headed",
     "test:cart": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 playwright test tests/cart.spec.js --project=chromium-auth --headed",
+    "test:register": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 playwright test tests/register.spec.js --project=chromium --headed",
     "auth:setup": "PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 node global-setup.js"
   },
   "keywords": [],

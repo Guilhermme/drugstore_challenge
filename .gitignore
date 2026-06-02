@@ -9,5 +9,4 @@ node_modules/
 
 # Local environment variables
 .env
-.vscode
 auth.json

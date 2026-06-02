@@ -1,0 +1,31 @@
+{
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"json"
+	],
+	"cucumberautocomplete.steps": [
+		"cypress/support/**/*.js"
+	],
+	"cucumberautocomplete.syncfeatures": "cypress/e2e/**/*.feature",
+	"cucumberautocomplete.strictGherkinCompletion": false,
+	"cucumberautocomplete.smartSnippets": true,
+	"cucumberautocomplete.stepsInvariants": true,
+	"editor.tabSize": 2,
+	"editor.guides.bracketPairs": true,
+	"editor.fontSize": 14,
+	"editor.lineHeight": 1.5,
+	"workbench.startupEditor": "newUntitledFile",
+	"explorer.compactFolders": false,
+	"editor.semanticHighlighting.enabled": false,
+	"editor.minimap.enabled": false,
+	"js/ts.format.insertSpaceBeforeFunctionParenthesis": true,
+	"files.watcherExclude": {
+		"**/.git/objects/**": true,
+		"**/.git/subtree-cache/***": true,
+		"**/node_modules/**": true,
+		"**/dist/**": true
+	}
+}
