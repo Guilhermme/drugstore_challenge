@@ -97,16 +97,16 @@ cp .env.example .env
 
 3. Execute os testes:
 
-```bash
-npx playwright test
-```
+### Executar Login
 
 ```bash
-npx playwright test:login
+npm run test:login
 ```
 
+### Executar Carrinho
+
 ```bash
-npx playwright test:cart
+npm run test:cart
 ```
 
 ---
